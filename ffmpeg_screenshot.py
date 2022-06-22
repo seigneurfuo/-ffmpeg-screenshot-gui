@@ -6,8 +6,9 @@ def main():
     timecode = sys.argv[1]
     files = sys.argv[2:]
 
-    for file_ in files:
-        extract_frame_at(file_, timecode)
+    for filepath in files:
+        output_folder = os.path.dirname(filepath)
+        extract_frame_at(filepath, timecode, output_folder)
 
 
 def extract_frame_at(video_filename, timecode, output_folder, extention="png"):
@@ -34,3 +35,6 @@ def extract_frame_at(video_filename, timecode, output_folder, extention="png"):
     else:
         msg = "The file {} don't exists anymore !".format(video_filename)
         return msg
+
+if __name__ == "__main__":
+    main()
